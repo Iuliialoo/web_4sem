@@ -4,10 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Document</title>
 </head>
-<body>
+<header>
     <h1>Дмитриева Юлия Михайловна - Лабораторная работа №1</h1>
-    <script src="main2.js"></script>
+</header>
+<body>
+    <button class="regist">Регистрация</button>
+    
+    <div class="form hidden">
+        <div class="form-content">
+            <!-- onsubmit={onSubmit()} action="" -->
+            <form action="" method="POST">
+                <button class="exit">X</button>
+                <label for="">
+                    <span>Введите email</span>
+                    <input class="email" type="email" name="email" required>
+                    <p class="error-email hidden">Неверный email</p>
+                </label>
+                <label>
+                    <span>Введите пароль</span>
+                    <div class="input-btn-line">
+                        <input class="password" type="password" minlength="6" name="password" required>
+                        <button class="show">Показать пароль</button>
+                    </div>
+                    <p class="error-password hidden">Минимальная длина пароля 6 символов</p>
+                </label>
+                <button class="submit" type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    <script src="main3.js"></script>
 </body>
 </html>

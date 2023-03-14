@@ -1,0 +1,115 @@
+.regist {
+    background-color: #f1f1f1;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 117%;
+    letter-spacing: 0.05em;
+    
+    display: block;
+    max-height: 100px;
+    max-width: 345px;
+    text-align: center;
+    padding: 14.5px 0;
+    margin-top: 0;
+    
+    width: 100%;
+    height: 100%;
+}
+
+.show {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    display: block;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    padding: 14.5px 0;
+    margin-top: 0;
+}
+
+.submit {
+    background-color: #f1f1f1;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 200px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.exit {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 10;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 600px;
+    padding: 50px;
+    border-radius: 0.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+label{
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+span{
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+input{
+    padding: 10px;
+    min-width: 350px;
+    width: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.input-btn-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error-email,
+.error-password {
+    color: red;
+}
