@@ -26,11 +26,11 @@ const passwordText = formContent.querySelector('.error-password')
 const emailText = formContent.querySelector('.error-email')
 
 formContent.addEventListener('click', (event) => {
-    console.log("form content");
+    // console.log("form content");
     event.preventDefault()
     
     if (event.target.classList.contains('exit')) {
-        console.log('exit');
+        // console.log('exit');
         modal.classList.add('hidden')
     }
 
@@ -68,12 +68,22 @@ inputEmail.addEventListener('blur', (event) => {
     else {
         emailText.classList.add('hidden')
     }
-    console.log(inputEmail.validity); 
+    // console.log(inputEmail.validity); 
 })
 
 // function onSubmit () {
 //     form.submit();
 // }
+
+// const sendForm = document.querySelector('.my-form')
+
+// sendForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     const formData = new FormData(event.currentTarget);
+//     console.log("s")
+
+//     console.log(`Email - ${formData.get('email')}\nPassword - ${formData.get('password')}`)
+// })
 
 
 
