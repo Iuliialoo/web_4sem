@@ -5,12 +5,25 @@ regist.addEventListener('click', (event) => {
     modal.classList.toggle('hidden')
 })
 
-// modal.addEventListener('click', (event) => {
-//     event.stopImmediatePropagation()
-//     modal.classList.add('hidden')
-// }, true)
+const sendForm = modal.querySelector('.my-form')
+
+sendForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    console.table({
+        "Email": formData.get('email'),
+        "Password": formData.get('password'),
+    })
+    modal.classList.add('hidden');
+})
 
 const formContent = modal.querySelector('.form-content')
+const exitBtn = formContent.querySelector(".exit")
+
+exitBtn.addEventListener("click", e => {
+    modal.classList.add('hidden');
+})
 
 modal.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
@@ -25,25 +38,14 @@ const inputEmail = formContent.querySelector('.email')
 const passwordText = formContent.querySelector('.error-password')
 const emailText = formContent.querySelector('.error-email')
 
-formContent.addEventListener('click', (event) => {
-    // console.log("form content");
+show.addEventListener('pointerdown', (event) => {
     event.preventDefault()
-    
-    if (event.target.classList.contains('exit')) {
-        // console.log('exit');
-        modal.classList.add('hidden')
-    }
+    inputPassword.setAttribute('type','text')
+})
 
-    show.addEventListener('mousedown', (event) => {
-        event.preventDefault()
-        inputPassword.setAttribute('type','text')
-    })
-
-    show.addEventListener('mouseup', (event) => {
-        event.preventDefault()
-        inputPassword.setAttribute('type','password')
-    })
-
+show.addEventListener('pointerup', (event) => {
+    event.preventDefault()
+    inputPassword.setAttribute('type','password')
 })
 
 inputPassword.addEventListener('blur', (event) => {
@@ -54,6 +56,7 @@ inputPassword.addEventListener('blur', (event) => {
     }
     else {
         passwordText.classList.add('hidden')
+        inputPassword.setCustomValidity("");
     }
 })
 
@@ -67,25 +70,7 @@ inputEmail.addEventListener('blur', (event) => {
     }
     else {
         emailText.classList.add('hidden')
+        inputEmail.setCustomValidity('');
     }
     // console.log(inputEmail.validity); 
 })
-
-// function onSubmit () {
-//     form.submit();
-// }
-
-// const sendForm = document.querySelector('.my-form')
-
-// sendForm.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     const formData = new FormData(event.currentTarget);
-//     console.log("s")
-
-//     console.log(`Email - ${formData.get('email')}\nPassword - ${formData.get('password')}`)
-// })
-
-
-
-
-
