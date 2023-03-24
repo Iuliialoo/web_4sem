@@ -61,8 +61,14 @@ spotLightRight.position.set(15, 5, 0);
 spotLightRight.target.position.set(0, 2, 10);
 spotLightRight.castShadow = true;
 
+const spotLightFront = new THREE.SpotLight(0xffffff, intensity);
+spotLightFront.position.set(0, 15, 0);
+spotLightFront.target.position.set(0, 2, 10);
+spotLightFront.castShadow = true;
+
 scene.add(spotLightLeft);
 scene.add(spotLightRight);
+scene.add(spotLightFront);
 
 // const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
 // hemiLight.position.set(0, 200, 0);
@@ -130,6 +136,7 @@ const vertices_wall = new Float32Array( [
 ] );
 
 geometry_wall.setAttribute( 'position', new THREE.BufferAttribute( vertices_wall, 3 ) );
+geometry_wall.computeVertexNormals();
 const mesh_wall = new THREE.Mesh( geometry_wall, material_purple );
 mesh_wall.position.set(0, 0, -3)
 // mesh_wall.castShadow = true;
@@ -173,6 +180,7 @@ const vertices = new Float32Array( [
 ] );
 
 geometry_piramid.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+geometry_piramid.computeVertexNormals();
 const mesh_piramid = new THREE.Mesh( geometry_piramid, material_change );
 mesh_piramid.position.x = 5;
 // mesh_piramid.position.set(-12, 0, 2);
