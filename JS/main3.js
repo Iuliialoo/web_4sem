@@ -52,11 +52,14 @@ inputPassword.addEventListener('blur', (event) => {
     if (inputPassword.validity.tooShort) {
         inputPassword.setCustomValidity('Пароль не должен быть меньше 6 символов')
         // inputPassword.reportValidity();
-        passwordText.classList.remove('hidden')
+        // passwordText.classList.remove('hidden')
+        const textPassError = sendForm.querySelector('.error-password')
+        textPassError.textContent = "Парроль должен быть не меньше 6 символов"
     }
     else {
-        passwordText.classList.add('hidden')
+        // passwordText.classList.add('hidden')
         inputPassword.setCustomValidity("");
+        textPassError.textContent = ""
     }
 })
 
@@ -66,11 +69,14 @@ inputEmail.addEventListener('blur', (event) => {
     if (inputEmail.validity.typeMismatch) {
         inputEmail.setCustomValidity('Неправильный формат email')
         // inputEmail.reportValidity();
-        emailText.classList.remove('hidden')
+        // emailText.classList.remove('hidden')
+        const textEmailError = sendForm.querySelector('.error-email')
+        textEmailError.textContent = "Неверный email"
     }
     else {
-        emailText.classList.add('hidden')
+        // emailText.classList.add('hidden')
         inputEmail.setCustomValidity('');
+        textEmailError.textContent = ""
     }
     // console.log(inputEmail.validity); 
 })
