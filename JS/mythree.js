@@ -17,6 +17,7 @@ renderer.setSize(div.clientWidth, div.clientHeight);
 
 // const material = new THREE.MeshBasicMaterial( { color: 0xAAAAAA, wireframe: true } );
 const material_change = new THREE.MeshPhongMaterial( { color: 0xAAAAAA, flatShading: true } );
+const material_plane = new THREE.MeshPhongMaterial( { color: 0xAAAAAA, flatShading: true } );
 const material_purple = new THREE.MeshPhongMaterial({color: 0XA98BFF, flatShading: true});
 const planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, flatShading: true });
 
@@ -38,16 +39,15 @@ const btn_light = document.querySelector('.on-off-light')
 btn_light.addEventListener('click', (event) => {
     if (intensity !== 1) {
         intensity = 1;
-        // directionalLightLeft.intensity = 1;
-        // directionalLightRight.intensity = 1;
-        // directionalLightFront.intensity = 1;
+        spotLightFront.intensity = 0.5
         spotLightLeft.intensity = 1;
         spotLightRight.intensity = 1;
     }
     else {
         intensity = 0;
-        spotLightLeft.intensity = 0
+        spotLightLeft.intensity = 0;
         spotLightRight.intensity = 0;
+        spotLightFront.intensity = 0;
     }
 })
 
@@ -61,9 +61,9 @@ spotLightRight.position.set(15, 5, 0);
 spotLightRight.target.position.set(0, 2, 10);
 spotLightRight.castShadow = true;
 
-const spotLightFront = new THREE.SpotLight(0xffffff, intensity);
-spotLightFront.position.set(0, 15, 0);
-spotLightFront.target.position.set(0, 2, 10);
+const spotLightFront = new THREE.HemisphereLight(0xffffff, 0x444444, 0.5);
+spotLightFront.position.set(0, 5, 20);
+// spotLightFront.target.position.set(0, 2, 10);
 spotLightFront.castShadow = true;
 
 scene.add(spotLightLeft);
@@ -116,7 +116,7 @@ scene.add(spotLightFront);
 
 
 const plane = new THREE.PlaneGeometry(1000, 1000, 32, 32);
-const planeMesh = new THREE.Mesh(plane, material_change);
+const planeMesh = new THREE.Mesh(plane, material_plane);
 planeMesh.rotation.x = - Math.PI / 2;
 planeMesh.position.y = 0;
 planeMesh.receiveShadow = true;
@@ -126,19 +126,19 @@ scene.add(planeMesh);
 // create a cube with buffer geometry
 const geometry_wall = new THREE.BufferGeometry();
 const vertices_wall = new Float32Array( [
-    -15, 0, 0,
-    15, 10, 0,
-    -15, 10, 0,
+    -17, 0, 0,
+    15, 12, 0,
+    -17, 12, 0,
 
-    -15, 0, 0,
+    -17, 0, 0,
     15, 0, 0,
-    15, 10, 0,
+    15, 12, 0,
 ] );
 
 geometry_wall.setAttribute( 'position', new THREE.BufferAttribute( vertices_wall, 3 ) );
 geometry_wall.computeVertexNormals();
 const mesh_wall = new THREE.Mesh( geometry_wall, material_purple );
-mesh_wall.position.set(0, 0, -3)
+mesh_wall.position.set(0, 0, -4)
 // mesh_wall.castShadow = true;
 mesh_wall.receiveShadow = true;
 scene.add( mesh_wall);
