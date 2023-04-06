@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/nodejs/public/awsm.css">
+    <title>Документация</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Путь</td>
+            <td>POST запрос</td>
+            <td>GET запрос</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>bad request (400)</td>
+            <td>Вывод приветствия</td>
+        </tr>
+        <tr>
+            <td>/comments</td>
+            <td>Вывод комментариев</td>
+            <td>bad request</td>
+        </tr>
+        <tr>
+            <td>/stats</td>
+            <td>bad request (400)</td>
+            <td>Вывод таблицы с кол-во запросом и user-agent</td>
+        </tr>
+        <tr>
+            <td>/doc</td>
+            <td>bad request (400)</td>
+            <td>Документация</td>
+        </tr>
+        <tr>
+            <td>Все остальные</td>
+            <td>bad request (400)</td>
+            <td>bad request (400)</td>
+        </tr>
+</body>
+</html>

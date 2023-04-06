@@ -28,7 +28,7 @@ const camera = new THREE.PerspectiveCamera(50, div.clientWidth / div.clientHeigh
 camera.position.set(0, 8, 25);
 cameraTarget = new THREE.Vector3(0, 2, 0);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer();
 renderer.setSize(div.clientWidth, div.clientHeight);
 div.appendChild(renderer.domElement);
 renderer.shadowMap.enabled = true;
@@ -61,9 +61,10 @@ spotLightRight.position.set(15, 5, 0);
 spotLightRight.target.position.set(0, 2, 10);
 spotLightRight.castShadow = true;
 
-const spotLightFront = new THREE.HemisphereLight(0xffffff, 0x444444, 0.5);
+const spotLightFront = new THREE.SpotLight(0xffffff, 0.5);
+// const spotLightFront = new THREE.HemisphereLight(0xffffff, 0x444444, 0.5);
 spotLightFront.position.set(0, 5, 20);
-// spotLightFront.target.position.set(0, 2, 10);
+spotLightFront.target.position.set(0, 2, 10);
 spotLightFront.castShadow = true;
 
 scene.add(spotLightLeft);
@@ -125,7 +126,7 @@ scene.add(planeMesh);
 
 // create a cube with buffer geometry
 const geometry_wall = new THREE.BufferGeometry();
-const vertices_wall = new Float32Array( [
+const vertices_wall = new Int8Array( [
     -17, 0, 0,
     15, 12, 0,
     -17, 12, 0,
@@ -153,7 +154,7 @@ scene.add( mesh_box);
 
 
 const geometry_piramid = new THREE.BufferGeometry();
-const vertices = new Float32Array( [
+const vertices = new Int8Array( [
 	3, 0, 3,
 	3, 0,  -3,
 	-3, 0,  3, 
@@ -197,7 +198,6 @@ btn.addEventListener('click', (event) => {
     else delta = 0.01;
 })
 
-const clock = new THREE.Clock();
 function animate() {
     requestAnimationFrame( animate );
 
@@ -208,8 +208,6 @@ function animate() {
     // const elapsedTime = clock.getElapsedTime()
     // camera.position.x = Math.cos(elapsedTime * 0.5) * 2;
     // camera.position.z = Math.sin(elapsedTime * 0.5) * 2;
-
-    camera.lookAt(cameraTarget);
 
     renderer.render( scene, camera );
 }
