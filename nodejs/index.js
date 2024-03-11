@@ -1,7 +1,7 @@
 const http = require('http')
 
 const hostname = '127.0.0.1'
-const port = 3000
+const port = 3001
 
 const comments = ['comment 1', 'comment 2', 'comment 3']
 const requests = {}
@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
 
     if (requests[req.headers['user-agent']] == undefined) requests[req.headers['user-agent']] = 1
     else requests[req.headers['user-agent']] += 1
-    console.log(`${req.headers['user-agent']}\tcount: ${requests[req.headers['user-agent']]}\t${req.method}\t${req.url} \n`)
+    // console.log(`${req.headers['user-agent']}\tcount: ${requests[req.headers['user-agent']]}\t${req.method}\t${req.url} \n`)
     
     if (req.url === '/') {
         if (req.method === 'GET') {

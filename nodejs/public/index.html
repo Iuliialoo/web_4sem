@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/nodejs/public/awsm.css">
+    <link rel="stylesheet" href="awsm.css">
     <title>Документация</title>
 </head>
 <body>
     <table>
         <tr>
-            <td>Путь</td>
+            <td>Путь /v1</td>
             <td>POST запрос</td>
             <td>GET запрос</td>
         </tr>
@@ -30,14 +30,32 @@
             <td>Вывод таблицы с кол-во запросом и user-agent</td>
         </tr>
         <tr>
-            <td>/doc</td>
-            <td>bad request (400)</td>
-            <td>Документация</td>
-        </tr>
-        <tr>
             <td>Все остальные</td>
             <td>bad request (400)</td>
             <td>bad request (400)</td>
         </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Путь /v2</td>
+            <td>POST запрос</td>
+            <td>GET запрос</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>bad request (400)</td>
+            <td>Вывод приветствия</td>
+        </tr>
+        <tr>
+            <td>/comments</td>
+            <td>Запись комментария</td>
+            <td>Вывод всех комментариев</td>
+        </tr>
+        <tr>
+            <td>/comments/:id</td>
+            <td>bad request (400)</td>
+            <td>Поиск комментария по id</td>
+        </tr>
+    </table>
 </body>
 </html>

@@ -1,13 +1,13 @@
-const express = require("express");
-
+const express = require("express")
 const router = express.Router()
-
+const middleware = require('../mid/middleware.js')
 
 const comments = ['comment 1', 'comment 2', 'comment 3']
+
 const requests = {}
 
 router.get('/favicon.ico', (req, res) => {
-    res.end()
+    res.send()
 })
 
 router.use((req, res, next) => {
@@ -18,22 +18,14 @@ router.use((req, res, next) => {
 })
 
 router.get('/', (req, res) => {
-    res.end('Hello World (express)!')
+    res.send('Hello World (express)!')
 })
 
-router.post('/comments', (req, res) => {
-    let body = ''
-    req.on('data', (chunk) => {
-        body += chunk
-    })
-    req.on('end', () => {
-        if (body) comments.push(body)
-        res.setHeader('Content-Type', 'application/json')
-        res.end(JSON.stringify(comments))
-    })
+router.post('/comments', middleware.checkEmptyBody, (req, res) => {
+    // console.log(req.body)
 })
 
-router.get('/stats', (req, res) => {
+router.get('/stats', middleware.checkEmptyBody, (req, res) => {
     res.setHeader('Content-Type', 'text/html')
     let text = '<table>'
     text += '<tr><th style="border: 1px solid black">User Agent</th><th style="border: 1px solid black">Requests</th></tr>'
@@ -41,12 +33,9 @@ router.get('/stats', (req, res) => {
         text += `<tr><td style="border: 1px solid black">${key}</td><td style="border: 1px solid black">${requests[key]}</td></tr>`
     }
     text += '</table>'
-    res.end(text)   
+    res.send(text)   
 })
 
-router.use((req, res) => {
-    res.statusCode = 400
-    res.end('400 Bad Request!')
-})
+router.use(middleware.badRequest)
 
 module.exports = router;
